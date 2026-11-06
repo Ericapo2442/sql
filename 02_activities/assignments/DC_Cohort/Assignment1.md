@@ -209,5 +209,13 @@ Consider, for example, concepts of fariness, inequality, social structures, marg
 
 
 ```
-Your thoughts...
+The reading explains the origins of NADRA, Pakistan’s national digital identification system. NADRA stores personal identification data used for citizenship verification and access to social services, and it also records kinship and ancestry. The author, Rida Qadri, argues that database design is not only a technical task but also a social and political one, and I agree. Building a national database of personal identification raises several considerations.
+
+In the case described in the article, the older NADRA design linked each person to a father or, for married women, a husband. People without that link, such as orphans or children of single mothers, could be left out of the system. In SQL terms, if the parent reference is a “NOT NULL” foreign key, a child whose parent isn’t in the database cannot be inserted at all. The exclusion is enforced by the schema itself. Similarly, rules such as requiring parents to be at least 15 years older than their children work like “CHECK” constraints. They catch data-entry errors, but they can also block real people whose records contain mistakes. As ideas about gender equality and diverse identities evolve, a design like this may not be flexible enough to capture every legitimate case.
+
+When designing a large database system, database engineers have to adapt to a constantly changing world. The engineer must anticipate how each part of the schema might need to change. Some attributes should stay open to change, for example stored in reference tables that can be extended as new categories appear. Others should remain fixed as columns governed by strict constraints such as personal IDs. It is impossible to plan for everything, so the designer has to decide where flexibility matters most.
+
+Data security is another major consideration. NADRA’s database can be used by banks, governmental department such as the tax agency, so a single glitch or a leak can expose sensitive personal information for millions of people with inconsiderable consequences.
+Building such a database is therefore not an easy task. A database engineer needs logical thinking, awareness of how the world is changing, and the ability to turn requirements into a logical data model and then a physical schema. The main lesson I take from this reading is that before adding a “NOT NULL” or “CHECK” constraint, a designer should ask who in the real world might not fit it and that would be the most challenging part of becoming a database engineer. 
+
 ```
