@@ -57,7 +57,19 @@ The store wants to keep customer addresses. Propose two architectures for the CU
 **HINT:** search type 1 vs type 2 slowly changing dimensions. 
 
 ```
-Your answer...
+Type 1 Overwrite (with no history kept)
+There will be some attributes in the CUSTOMER_ADDRESS table, including : customer_id (PK --> customer), street name, city, province, postal_code, country.
+- One row per customer. When the address of the customer changes, the existing row is updated with the new address and the old one is lost. 
+- Relationship : customer 1 -- 1 customer_address table.
+- Simplier and save computational memory, but lost the past history of the customer. 
+
+Type 2 Retain changes
+There will be some attributes in the CUSTOMER_ADDRESS table, including :
+address_id(PK),  customer_id (FK --> customer), street name, city, province, postal_code, country, initial_date, end_date, curent_address (a boolean).
+- Keep the old address of the customer even when they move. 
+- Relationship : customer 1-- many customer_address table.
+- Keeping a full history of the customer but required saving space. 
+
 ```
 
 ***
@@ -193,5 +205,13 @@ Consider, for example, concepts of labour, bias, LLM proliferation, moderating c
 
 
 ```
-Your thoughts...
+This article explains how image recognition system was developed and how the data used to train them was gathered. In supervised machine learning, such as training a model to tell cats from dogs, a computer first needs a large dataset of images that humans have already labelled correctly. The model learns by comparing new images against those labelled examples. Once trained, these systems can take over repetitive tasks like sorting images, which saves human time and effort, but the machine learning could only work as well as the data input are labeled correctly that they can learn from.
+
+However, the article shows that this “automation” tasks depend heavily on hidden human labor. When the ImageNet team found that paying students $10 an hour was too slow, they turned to Amazon Mechanical Turk. There, workers labelled images for only a few cents each and were even tested with control images to check they weren’t cheating. These workers did tedious, repetitive work with little pay or recognition, while the credit for breakthroughs went to well-known researchers. Prior ideas holders or contributors, such as those who helped to build WordNet, were often left unnamed as well. This raises ethical questions about fair pay and about who gets credited for building AI.
+
+A second issue is bias. Humans choose the categories and label them, so human assumptions and judgements become an important part of the dataset. ImageNet’s “person” categories included many offensive or meaningless labels, which may “contaminate” the whole project, in which it was able to remove them. When data sets like this are used in areas such as facial recognition or policing, those biases can cause real harm and impact. ImageNet’s design influenced many later systems, so these problems can spread as AI is used more widely nowadays. Privacy matters a lot too, as the images were collected from the web, often without the knowledge or consent from the people as well. 
+
+Overall, the article argues that technology is never neutral, because people make decisions at every layer of how these systems are built. To use AI responsibly, we should pay critical attention and think carefully about where training data comes from and regularly review the data sets for possible biases. 
+
+
 ```
